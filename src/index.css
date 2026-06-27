@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  --color-maroon: #7A1E2C;
+  --color-maroon-light: #9B2D3C;
+  --color-maroon-dark: #5D1621;
+
+  --color-gold: #D4AF37;
+  --color-gold-light: #E5C467;
+  --color-gold-dark: #A68A27;
+
+  --color-ivory: #FFF8F0;
+  --color-ivory-dark: #F5E6D3;
+
+  --color-charcoal: #1A1A1A;
+  --color-charcoal-light: #333333;
+
+  --font-playfair: "Playfair Display", serif;
+  --font-poppins: "Poppins", sans-serif;
+
+  --animate-fade-up: fadeUp 0.5s ease-out forwards;
+  --animate-fade-down: fadeDown 0.5s ease-out forwards;
+  --animate-float: float 3s ease-in-out infinite;
+
+  @keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-poppins bg-ivory text-charcoal overflow-x-hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-playfair;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-xl border border-white/10;
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold via-gold-light to-gold-dark;
+  }
+
+  .btn-gold {
+    @apply bg-gold text-maroon font-semibold px-8 py-3 rounded-full hover:bg-gold-light transition-all duration-300 shadow-lg hover:shadow-gold/20 transform hover:translate-y-[-4px];
+  }
+
+  .btn-outline {
+    @apply border-2 border-gold text-gold font-semibold px-8 py-3 rounded-full hover:bg-gold hover:text-maroon transition-all duration-300 transform hover:translate-y-[-4px];
+  }
+}
+
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-ivory;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-maroon/20 rounded-full hover:bg-maroon/40 transition-colors;
+  }
+
+  .cursor-glow {
+    pointer-events: none;
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0) 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+  }
+
+  .ornament-line {
+    @apply flex items-center justify-center space-x-4;
+  }
+
+  .ornament-line::before,
+  .ornament-line::after {
+    content: "";
+    @apply h-[1px] w-12 bg-gradient-to-r from-transparent to-gold/50;
+  }
+
+  .ornament-line::after {
+    @apply bg-gradient-to-l;
+  }
+}
