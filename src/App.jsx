@@ -1,29 +1,34 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CursorGlow from './components/CursorGlow';
 import LoadingScreen from './components/LoadingScreen';
 import HomePage from './HomePage';
 import CategoryListing from './components/CategoryListing';
+import SurveyPage from './pages/SurveyPage';
 
-function App() {
+function AppContent() {
+    const location = useLocation();
+    const isSurveyPage = location.pathname === '/survey';
+
     return (
-        <Router>
-            <div className="relative min-h-screen bg-ivory selection:bg-gold/30">
-                <LoadingScreen />
-                <CursorGlow />
+        <div className="relative min-h-screen bg-ivory selection:bg-gold/30">
+            <LoadingScreen />
+            <CursorGlow />
 
-                <Navbar />
+            {!isSurveyPage && <Navbar />}
 
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/collection/:categoryId" element={<CategoryListing />} />
-                </Routes>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/collection/:categoryId" element={<CategoryListing />} />
+                <Route path="/survey" element={<SurveyPage />} />
+            </Routes>
 
-                <Footer />
+            {!isSurveyPage && <Footer />}
 
-                {/* Floating WhatsApp Button */}
+            {/* Floating WhatsApp Button */}
+            {!isSurveyPage && (
                 <a
                     href="https://wa.me/#"
                     target="_blank"
@@ -37,7 +42,15 @@ function App() {
                         Chat with us
                     </span>
                 </a>
-            </div>
+            )}
+        </div>
+    );
+}
+
+function App() {
+    return (
+        <Router>
+            <AppContent />
         </Router>
     );
 }

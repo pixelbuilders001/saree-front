@@ -9,6 +9,7 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import CTA from './components/CTA';
 import ProductShowcase from './components/ProductShowcase';
+import CustomOrder from './components/CustomOrder';
 import { products } from './data/products';
 
 const HomePage = () => {
@@ -18,7 +19,6 @@ const HomePage = () => {
     return (
         <main>
             <Hero />
-
 
             {/* Featured Sections */}
             <ProductShowcase
@@ -36,6 +36,9 @@ const HomePage = () => {
                 products={bestSellers}
                 viewAllLink="/collection/silk"
             />
+
+            <CustomOrder />
+
             <Benefits />
             <About />
             <Features />
