@@ -18,7 +18,7 @@ const HomePage = () => {
     return (
         <main>
             <Hero />
-            <Benefits />
+
 
             {/* Featured Sections */}
             <ProductShowcase
@@ -36,7 +36,7 @@ const HomePage = () => {
                 products={bestSellers}
                 viewAllLink="/collection/silk"
             />
-
+            <Benefits />
             <About />
             <Features />
             <Testimonials />

@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { categories } from '../data/products';
 
 const Categories = () => {
-    // Map existing category IDs to the original images used previously
+    // Map existing category IDs to the local images
     const categoryImages = {
-        'banarasi': 'https://images.unsplash.com/photo-1610030469668-356396425c34?q=80&w=800',
-        'silk': 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800',
-        'cotton': 'https://images.unsplash.com/photo-1610030469915-9a08da39d53c?q=80&w=800',
-        'organza': 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800',
-        'party-wear': 'https://images.unsplash.com/photo-1599023023063-e38012ccbe1f?q=80&w=800',
-        'bridal': '/assets/bridal_saree_jpg_1782486877250.png'
+        'banarasi': '/assets/cat_banarasi.png',
+        'silk': '/assets/cat_silk.png',
+        'cotton': '/assets/cat_cotton.png',
+        'organza': '/assets/cat_organza.png',
+        'party-wear': '/assets/cat_party_wear.png',
+        'bridal': '/assets/cat_bridal.png'
     };
 
     return (
