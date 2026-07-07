@@ -8,9 +8,7 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand */}
                     <div className="space-y-6">
-                        <h3 className="text-2xl font-playfair font-bold text-white tracking-wider">
-                            MAHALAKSHMI <span className="text-gold">SAREES</span>
-                        </h3>
+                        <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
                         <p className="font-light leading-relaxed">
                             Bringing you the finest handpicked sarees from across India. Experience
                             luxury, tradition, and elegance in every weave.
@@ -62,22 +60,22 @@ const Footer = () => {
                         <ul className="space-y-4">
                             <li className="flex items-start space-x-3">
                                 <MapPin size={20} className="text-gold mt-1 shrink-0" />
-                                <span>Luxury Lane, Fashion District, Your City, India</span>
+                                <span>Rudauli Chowk,Harpur Aloth,Samastipur-848101, Bihar</span>
                             </li>
                             <li className="flex items-center space-x-3">
                                 <Phone size={20} className="text-gold shrink-0" />
-                                <span>+91 98765 43210</span>
+                                <span>coming soon</span>
                             </li>
                             <li className="flex items-center space-x-3">
                                 <Mail size={20} className="text-gold shrink-0" />
-                                <span>enquiry@mahalakshmisarees.com</span>
+                                <span>shreebanarasi180@gmail.com</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <div className="pt-8 border-t border-white/5 text-center text-sm font-light">
-                    <p>© {new Date().getFullYear()} Mahalakshmi Sarees. Developed with Elegance. All Rights Reserved.</p>
+                    <p>© {new Date().getFullYear()} Shree Banarasi Sarees. Developed with Elegance. All Rights Reserved.</p>
                 </div>
             </div>
         </footer>

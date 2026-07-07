@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { PenTool, Palette, Scissors, MessageCircle } from 'lucide-react';
 
 const CustomOrder = () => {
@@ -49,7 +50,7 @@ const CustomOrder = () => {
                                 <span className="text-gold italic">Our Craftsmanship</span>
                             </h2>
                             <p className="text-ivory/60 text-lg mb-10 max-w-xl leading-relaxed">
-                                Experience the luxury of bespoke heritage. At Mahalakshmi Sarees,
+                                Experience the luxury of bespoke heritage. At our boutique,
                                 we allow you to become a designer. Customize every thread,
                                 from the base fabric to the intricate zari motifs.
                             </p>
@@ -68,14 +69,16 @@ const CustomOrder = () => {
                                 ))}
                             </div>
 
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="flex items-center space-x-3 bg-gold text-maroon font-bold px-10 py-5 rounded-full shadow-2xl shadow-gold/20 transition-all duration-300"
-                            >
-                                <MessageCircle size={20} />
-                                <span className="tracking-widest uppercase">CONSULT OUR DESIGNER</span>
-                            </motion.button>
+                            <Link to="/customize">
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="inline-flex items-center space-x-3 bg-gold text-maroon font-bold px-10 py-5 rounded-full shadow-2xl shadow-gold/20 transition-all duration-300 cursor-pointer"
+                                >
+                                    <MessageCircle size={20} />
+                                    <span className="tracking-widest uppercase">DESIGN YOUR SAREE</span>
+                                </motion.div>
+                            </Link>
                         </motion.div>
                     </div>
 

@@ -17,7 +17,7 @@ const About = () => {
                         <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
                             <img
                                 src="/assets/showroom_luxury_jpg_1782486864588.png"
-                                alt="Mahalakshmi Showroom"
+                                alt="Bespoke Showroom"
                                 className="w-full h-auto hover:scale-105 transition-transform duration-700"
                             />
                         </div>
@@ -46,7 +46,7 @@ const About = () => {
                         </h2>
                         <div className="space-y-6 text-charcoal/70 text-lg leading-relaxed font-light">
                             <p>
-                                Mahalakshmi Sarees is more than just a showroom; it's a celebration
+                                Our boutique is more than just a showroom; it's a celebration
                                 of India's rich textile heritage. We believe that every saree tells
                                 a story of craftsmanship, tradition, and timeless beauty.
                             </p>

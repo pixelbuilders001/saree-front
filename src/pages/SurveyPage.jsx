@@ -39,9 +39,8 @@ const SurveyPage = () => {
         <div className="min-h-screen bg-ivory font-poppins selection:bg-gold selection:text-maroon">
             {/* Minimal Header */}
             <header className="py-8 px-6 flex justify-between items-center bg-white/50 backdrop-blur-md sticky top-0 z-50">
-                <Link to="/" className="flex items-center space-x-2">
-                    <Star className="text-gold" size={24} />
-                    <span className="text-xl font-playfair font-bold text-maroon">महालक्ष्मी (Mahalakshmi)</span>
+                <Link to="/" className="flex items-center">
+                    <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
                 </Link>
                 <div className="text-xs font-bold text-gold tracking-widest uppercase">
                     अर्ली एक्सेस सर्वे

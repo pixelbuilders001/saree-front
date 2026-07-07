@@ -9,7 +9,7 @@ const Hero = () => {
             <div className="absolute inset-0 z-0">
                 <img
                     src="/assets/hero_multi.png"
-                    alt="Mahalakshmi Sarees Collection"
+                    alt="Bespoke Saree Collection"
                     className="w-full h-full object-cover opacity-60 md:opacity-60 opacity-40"
                 />
                 {/* Responsive Gradient */}

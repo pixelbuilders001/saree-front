@@ -35,19 +35,13 @@ const Navbar = () => {
             <div className="container mx-auto px-6 flex justify-between items-center">
                 <Link
                     to="/"
-                    className="flex items-center space-x-3 group cursor-pointer"
+                    className="flex items-center group cursor-pointer"
                 >
-                    <div className="w-10 h-10 flex items-center justify-center border border-gold/30 rounded-full group-hover:border-gold transition-colors duration-300">
-                        <Star className="text-gold" size={24} />
-                    </div>
-                    <div className="flex flex-col">
-                        <span className={`text-xl font-playfair font-bold tracking-wider leading-none ${isScrolled || !isHomePage ? 'text-maroon' : 'text-white'}`}>
-                            Mahalakshmi
-                        </span>
-                        <span className="text-[10px] font-poppins tracking-[0.3em] font-medium text-gold uppercase">
-                            Sarees
-                        </span>
-                    </div>
+                    <img
+                        src="/logo.png"
+                        alt="Logo"
+                        className="h-10 w-auto transition-all duration-300"
+                    />
                 </Link>
 
                 {/* Desktop Menu */}

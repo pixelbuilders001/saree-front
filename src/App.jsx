@@ -7,6 +7,7 @@ import LoadingScreen from './components/LoadingScreen';
 import HomePage from './HomePage';
 import CategoryListing from './components/CategoryListing';
 import SurveyPage from './pages/SurveyPage';
+import CustomizerPage from './pages/CustomizerPage';
 
 function AppContent() {
     const location = useLocation();
@@ -23,6 +24,7 @@ function AppContent() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/collection/:categoryId" element={<CategoryListing />} />
                 <Route path="/survey" element={<SurveyPage />} />
+                <Route path="/customize" element={<CustomizerPage />} />
             </Routes>
 
             {!isSurveyPage && <Footer />}

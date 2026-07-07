@@ -7,7 +7,7 @@ const Testimonials = () => {
         {
             name: "Ananya Sharma",
             role: "Fashion Designer",
-            content: "The collection at Mahalakshmi is truly breathtaking. I've never seen such intricate Banarasi work at such reasonable prices. A must-visit!",
+            content: "The collection here is truly breathtaking. I've never seen such intricate Banarasi work at such reasonable prices. A must-visit!",
             img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200"
         },
         {

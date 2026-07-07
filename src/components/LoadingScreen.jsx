@@ -27,11 +27,13 @@ const LoadingScreen = () => {
                         transition={{ duration: 1, ease: "easeOut" }}
                         className="text-center"
                     >
-                        <h1 className="text-4xl md:text-6xl text-gold font-playfair font-bold tracking-[0.2em] mb-4">
-                            MAHALAKSHMI
-                        </h1>
+                        <img
+                            src="/logo.png"
+                            alt="Logo"
+                            className="h-16 w-auto mx-auto mb-6"
+                        />
                         <div className="w-24 h-[2px] bg-gold mx-auto mb-4" />
-                        <p className="text-ivory/60 tracking-[0.4em] uppercase text-sm">Timeless Elegance Since 2024</p>
+                        <p className="text-ivory/60 tracking-[0.4em] uppercase text-xs">Heritage Saree Studio</p>
                     </motion.div>
 
                     <motion.div
