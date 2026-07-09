@@ -8,6 +8,7 @@ import HomePage from './HomePage';
 import CategoryListing from './components/CategoryListing';
 import SurveyPage from './pages/SurveyPage';
 import CustomizerPage from './pages/CustomizerPage';
+import GrandOpeningPage from './pages/GrandOpeningPage';
 
 function AppContent() {
     const location = useLocation();
@@ -25,6 +26,7 @@ function AppContent() {
                 <Route path="/collection/:categoryId" element={<CategoryListing />} />
                 <Route path="/survey" element={<SurveyPage />} />
                 <Route path="/customize" element={<CustomizerPage />} />
+                <Route path="/grand-opening" element={<GrandOpeningPage />} />
             </Routes>
 
             {!isSurveyPage && <Footer />}

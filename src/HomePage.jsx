@@ -4,6 +4,7 @@ import Benefits from './components/Benefits';
 import Categories from './components/Categories';
 import About from './components/About';
 import RegistrationForm from './components/RegistrationForm';
+import GrandOpeningForm from './components/GrandOpeningForm';
 import Features from './components/Features';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
@@ -43,6 +44,7 @@ const HomePage = () => {
             <About />
             <Features />
             <Testimonials />
+            <GrandOpeningForm />
             <FAQ />
             <RegistrationForm />
             <CTA />
