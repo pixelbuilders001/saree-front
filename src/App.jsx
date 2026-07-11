@@ -9,17 +9,19 @@ import CategoryListing from './components/CategoryListing';
 import SurveyPage from './pages/SurveyPage';
 import CustomizerPage from './pages/CustomizerPage';
 import GrandOpeningPage from './pages/GrandOpeningPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 function AppContent() {
     const location = useLocation();
     const isSurveyPage = location.pathname === '/survey';
+    const hideHeaderFooter = location.pathname === '/survey' || location.pathname === '/privacy-policy';
 
     return (
         <div className="relative min-h-screen bg-ivory selection:bg-gold/30">
             <LoadingScreen />
             <CursorGlow />
 
-            {!isSurveyPage && <Navbar />}
+            {!hideHeaderFooter && <Navbar />}
 
             <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -27,12 +29,13 @@ function AppContent() {
                 <Route path="/survey" element={<SurveyPage />} />
                 <Route path="/customize" element={<CustomizerPage />} />
                 <Route path="/grand-opening" element={<GrandOpeningPage />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             </Routes>
 
-            {!isSurveyPage && <Footer />}
+            {!hideHeaderFooter && <Footer />}
 
             {/* Floating WhatsApp Button */}
-            {!isSurveyPage && (
+            {/* {!isSurveyPage && (
                 <a
                     href="https://wa.me/#"
                     target="_blank"
@@ -46,7 +49,7 @@ function AppContent() {
                         Chat with us
                     </span>
                 </a>
-            )}
+            )} */}
         </div>
     );
 }

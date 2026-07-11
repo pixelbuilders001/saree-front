@@ -1,5 +1,6 @@
 import React from 'react';
 import { Camera, MessageSquare, Send, Phone as WhatsApp, Mail, MapPin, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -74,8 +75,11 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="pt-8 border-t border-white/5 text-center text-sm font-light">
+                <div className="pt-8 border-t border-white/5 text-center text-sm font-light flex flex-col md:flex-row justify-between items-center gap-4">
                     <p>© {new Date().getFullYear()} Shree Banarasi Sarees. Developed with Elegance. All Rights Reserved.</p>
+                    <Link to="/privacy-policy" className="hover:text-gold transition-colors duration-300">
+                        Privacy Policy
+                    </Link>
                 </div>
             </div>
         </footer>
