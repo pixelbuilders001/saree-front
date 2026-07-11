@@ -33,9 +33,9 @@ const CustomizerPage = () => {
     ];
 
     const borderOptions = [
-        { id: 'gold-zari', name: 'Pure Gold Zari', price: '+ ₹5,000' },
-        { id: 'silver-zari', name: 'Antique Silver Thread', price: '+ ₹4,500' },
-        { id: 'thread-work', name: 'Resham Threadwork', price: '+ ₹3,200' }
+        { id: 'gold-zari', name: 'Pure Gold Zari', price: '+ ₹xxxx' },
+        { id: 'silver-zari', name: 'Antique Silver Thread', price: '+ ₹xxxx' },
+        { id: 'thread-work', name: 'Resham Threadwork', price: '+ ₹xxxx' }
     ];
 
     const handleFileUpload = (e) => {

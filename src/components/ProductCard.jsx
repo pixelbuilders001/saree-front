@@ -47,7 +47,7 @@ const ProductCard = ({ product }) => {
                 </p>
                 <div className="flex items-center justify-between">
                     <span className="text-maroon font-bold text-xl">
-                        ₹{product.price.toLocaleString()}
+                        ₹xxxx
                     </span>
                     <span className="text-[10px] text-gold font-bold uppercase tracking-widest border border-gold/30 px-2 py-0.5 rounded">
                         New Arrival
