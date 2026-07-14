@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from './components/Hero';
+import CategoryCircles from './components/CategoryCircles';
 import Benefits from './components/Benefits';
-import Categories from './components/Categories';
 import About from './components/About';
 import RegistrationForm from './components/RegistrationForm';
 import GrandOpeningForm from './components/GrandOpeningForm';
@@ -21,6 +21,8 @@ const HomePage = () => {
         <main>
             <Hero />
 
+            <CategoryCircles />
+
             {/* Featured Sections */}
             <ProductShowcase
                 title="New Arrivals"
@@ -28,8 +30,6 @@ const HomePage = () => {
                 products={newArrivals}
                 viewAllLink="/collection/banarasi"
             />
-
-            <Categories />
 
             <ProductShowcase
                 title="Best Sellers"

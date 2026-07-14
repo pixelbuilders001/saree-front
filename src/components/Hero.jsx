@@ -1,115 +1,192 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Sparkles, Gift, Compass, Trophy, Medal, Award } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
 const Hero = () => {
+    const slides = [
+        {
+            image: '/assets/hero_banarasi_slide.png',
+            title: 'Heritage Craftsmanship',
+            subtitle: 'Handpicked masterpieces directly from India\'s finest master weavers.',
+            cta: 'Explore Banarasi',
+            link: '/collection/banarasi'
+        },
+        {
+            image: '/assets/hero_silk_slide.png',
+            title: 'Pure Kanchipuram Silk',
+            subtitle: 'Experience the luxurious luster of authentic handwoven silk sarees.',
+            cta: 'Explore Pure Silk',
+            link: '/collection/silk'
+        },
+        {
+            image: '/assets/hero_bridal_slide.png',
+            title: 'The Bridal Trousseau',
+            subtitle: 'Meticulously designed gold and silver zari drapes for your special moments.',
+            cta: 'Explore Bridal Pattu',
+            link: '/collection/bridal'
+        }
+    ];
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [direction, setDirection] = useState(0); // -1 for left, 1 for right
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            handleNext();
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [currentIndex]);
+
+    const handleNext = () => {
+        setDirection(1);
+        setCurrentIndex((prev) => (prev + 1) % slides.length);
+    };
+
+    const handlePrev = () => {
+        setDirection(-1);
+        setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
+    };
+
+    // Fade and slide variants for the carousel transitions
+    const slideVariants = {
+        enter: (dir) => ({
+            opacity: 0,
+            scale: 1.02
+        }),
+        center: {
+            opacity: 1,
+            scale: 1,
+            transition: { duration: 0.8, ease: 'easeOut' }
+        },
+        exit: (dir) => ({
+            opacity: 0,
+            scale: 0.98,
+            transition: { duration: 0.8, ease: 'easeIn' }
+        })
+    };
+
     return (
-        <section id="home" className="relative h-screen w-full flex items-center overflow-hidden bg-charcoal">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <img
-                    src="/assets/hero_multi.png"
-                    alt="Bespoke Saree Collection"
-                    className="w-full h-full object-cover opacity-60 md:opacity-60 opacity-40"
-                />
-                {/* Responsive Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-charcoal via-charcoal/60 md:via-charcoal/40 to-transparent" />
+        <section id="home" className="relative h-[80vh] md:h-[85vh] min-h-[550px] w-full bg-charcoal overflow-hidden group/hero">
+
+            {/* Carousel Slides */}
+            <AnimatePresence initial={false} custom={direction}>
+                <motion.div
+                    key={currentIndex}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    className="absolute inset-0 w-full h-full"
+                >
+                    {/* Background Saree Model Image */}
+                    <img
+                        src={slides[currentIndex].image}
+                        alt={slides[currentIndex].title}
+                        className="w-full h-full object-cover opacity-60 transition-transform duration-700 ease-out scale-102"
+                    />
+
+                    {/* Minimalist Premium Vignette Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/20 to-charcoal/50" />
+
+                    {/* Slide Text Content */}
+                    <div className="absolute inset-0 flex items-center justify-start">
+                        <div className="container mx-auto px-6 md:px-12 lg:px-24 text-center md:text-left max-w-3xl flex flex-col items-center md:items-start md:max-w-lg lg:max-w-xl">
+
+                            {/* Slide Label (Small) */}
+                            <motion.span
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2, duration: 0.6 }}
+                                className="text-[10px] md:text-xs font-poppins font-medium uppercase tracking-[0.3em] text-gold mb-3 md:mb-4"
+                            >
+                                Royal Heritage Collection
+                            </motion.span>
+
+                            {/* Main Slide Title */}
+                            <motion.h1
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3, duration: 0.7 }}
+                                className="text-3xl md:text-5xl lg:text-6xl text-white font-bold mb-4 md:mb-6 font-playfair leading-tight tracking-wide"
+                            >
+                                {slides[currentIndex].title}
+                            </motion.h1>
+
+                            {/* Ornament line */}
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 0.5, scale: 1 }}
+                                transition={{ delay: 0.4, duration: 0.6 }}
+                                className="flex items-center space-x-3 mb-4 md:mb-6 justify-center md:justify-start"
+                            >
+                                <div className="h-[0.5px] w-6 bg-gold" />
+                                <div className="w-1 h-1 rotate-45 border border-gold" />
+                                <div className="h-[0.5px] w-6 bg-gold" />
+                            </motion.div>
+
+                            {/* Minimalist Subtitle */}
+                            <motion.p
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.45, duration: 0.6 }}
+                                className="text-xs md:text-base text-ivory/80 mb-6 md:mb-8 font-light font-poppins leading-relaxed max-w-lg"
+                            >
+                                {slides[currentIndex].subtitle}
+                            </motion.p>
+
+                            {/* CTA Link Button - Minimalist design */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.55, duration: 0.6 }}
+                            >
+                                <Link
+                                    to={slides[currentIndex].link}
+                                    className="inline-flex items-center space-x-2 bg-gold/90 text-maroon hover:bg-gold px-6 py-2.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:scale-103"
+                                >
+                                    <span>{slides[currentIndex].cta}</span>
+                                    <ArrowRight size={14} />
+                                </Link>
+                            </motion.div>
+                        </div>
+                    </div>
+                </motion.div>
+            </AnimatePresence>
+
+            {/* Slider Dots indicators */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
+                {slides.map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => {
+                            setDirection(i > currentIndex ? 1 : -1);
+                            setCurrentIndex(i);
+                        }}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-gold w-6' : 'bg-white/40 hover:bg-white/80'}`}
+                        aria-label={`Go to slide ${i + 1}`}
+                    />
+                ))}
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 pt-20 md:pt-16">
-                <div className="max-w-4xl mx-auto md:mx-0 text-center md:text-left">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                    >
-                        {/* Heading */}
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-4 md:mb-6 leading-[1.2] md:leading-[1.1] font-playfair tracking-tight">
-                            Discover <br className="hidden md:block" />
-                            <span className="text-gold italic font-medium">Timeless</span>
-                            {" "}Elegance
-                        </h1>
+            {/* Carousel Navigation Arrows */}
+            <button
+                onClick={handlePrev}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full border border-white/20 bg-charcoal/30 text-white flex items-center justify-center hover:bg-gold hover:text-maroon hover:border-gold transition-all duration-300 opacity-0 group-hover/hero:opacity-100"
+                aria-label="Previous slide"
+            >
+                <ChevronLeft size={20} />
+            </button>
 
-                        {/* Ornament Separator */}
-                        <div className="flex items-center justify-center md:justify-start space-x-4 mb-6 opacity-60">
-                            <div className="h-[1px] w-8 md:w-10 bg-gradient-to-r from-transparent to-gold" />
-                            <div className="w-1.5 h-1.5 rotate-45 border border-gold" />
-                            <div className="h-[1px] w-8 md:w-10 bg-gradient-to-l from-transparent to-gold" />
-                        </div>
+            <button
+                onClick={handleNext}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full border border-white/20 bg-charcoal/30 text-white flex items-center justify-center hover:bg-gold hover:text-maroon hover:border-gold transition-all duration-300 opacity-0 group-hover/hero:opacity-100"
+                aria-label="Next slide"
+            >
+                <ChevronRight size={20} />
+            </button>
 
-                        {/* Description */}
-                        <p className="text-sm md:text-lg text-ivory/80 mb-8 max-w-lg mx-auto md:mx-0 font-light leading-relaxed">
-                            Handpicked Banarasi, Silk, Cotton, and Designer Sarees.
-                            <span className="hidden md:inline"> Premium quality at affordable prices for every occasion.</span>
-                        </p>
-
-                        {/* Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-12">
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="flex items-center justify-center space-x-3 bg-gold text-maroon font-bold px-8 py-3 md:py-3.5 rounded-lg shadow-xl shadow-gold/10 transition-all duration-300 text-xs md:text-sm"
-                            >
-                                <Gift size={16} className="md:w-4.5 md:h-4.5" />
-                                <span className="tracking-widest uppercase">JOIN VIP LAUNCH</span>
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="flex items-center justify-center space-x-3 border border-gold/50 text-gold font-bold px-8 py-3 md:py-3.5 rounded-lg hover:bg-gold/5 transition-all duration-300 text-xs md:text-sm"
-                            >
-                                <Compass size={16} className="md:w-4.5 md:h-4.5" />
-                                <span className="tracking-widest uppercase">EXPLORE COLLECTIONS</span>
-                            </motion.button>
-                        </div>
-                    </motion.div>
-
-                    {/* Stats Bar */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                        className="grid grid-cols-3 md:grid-cols-3 gap-0 border border-white/10 bg-black/40 backdrop-blur-xl rounded-xl overflow-hidden max-w-2xl mx-auto md:mx-0"
-                    >
-                        <div className="p-3 md:p-4 flex flex-col md:flex-row items-center md:items-center text-center md:text-left space-y-2 md:space-y-0 md:space-x-3 border-r border-white/10 hover:bg-white/5 transition-colors group">
-                            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                                <Award className="text-gold" size={16} />
-                            </div>
-                            <div className="hidden md:block">
-                                <h4 className="text-white text-[10px] md:text-xs font-bold opacity-90">Premium Quality</h4>
-                                <p className="text-ivory/40 text-[8px] uppercase tracking-wider mt-0.5">Handpicked</p>
-                            </div>
-                            <div className="md:hidden">
-                                <h4 className="text-white text-[9px] font-bold opacity-90 leading-tight">Premium</h4>
-                            </div>
-                        </div>
-                        <div className="p-3 md:p-4 flex flex-col md:flex-row items-center md:items-center text-center md:text-left space-y-2 md:space-y-0 md:space-x-3 border-r border-white/10 hover:bg-white/5 transition-colors group">
-                            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                                <Trophy className="text-gold" size={16} />
-                            </div>
-                            <div className="hidden md:block">
-                                <h4 className="text-white text-[10px] md:text-xs font-bold opacity-90">Affordable</h4>
-                                <p className="text-ivory/40 text-[8px] uppercase tracking-wider mt-0.5">Best Value</p>
-                            </div>
-                            <div className="md:hidden">
-                                <h4 className="text-white text-[9px] font-bold opacity-90 leading-tight">Value</h4>
-                            </div>
-                        </div>
-                        <div className="p-3 md:p-4 flex flex-col md:flex-row items-center md:items-center text-center md:text-left space-y-2 md:space-y-0 md:space-x-3 hover:bg-white/5 transition-colors group">
-                            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                                <Medal className="text-gold" size={16} />
-                            </div>
-                            <div className="hidden md:block">
-                                <h4 className="text-white text-[10px] md:text-xs font-bold opacity-90">VIP Offers</h4>
-                                <p className="text-ivory/40 text-[8px] uppercase tracking-wider mt-0.5">Exclusive</p>
-                            </div>
-                            <div className="md:hidden">
-                                <h4 className="text-white text-[9px] font-bold opacity-90 leading-tight">Offers</h4>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
         </section>
     );
 };

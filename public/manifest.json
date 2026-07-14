@@ -1,0 +1,25 @@
+{
+    "short_name": "Shree Banarasi",
+    "name": "SHREE Banarasi Sarees",
+    "description": "Premium, handwoven Banarasi and Kanchipuram silk sarees showcasing royal Indian heritage.",
+    "icons": [
+        {
+            "src": "/pwa-192.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/pwa-512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#FAF9F6",
+    "theme_color": "#7B1F34",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "scope": "/"
+}

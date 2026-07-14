@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Crown, Star } from 'lucide-react';
+import { Menu, X, Crown } from 'lucide-react';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -28,8 +28,8 @@ const Navbar = () => {
     return (
         <nav
             className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled || !isHomePage
-                ? 'bg-ivory/90 backdrop-blur-lg py-3 shadow-lg border-b border-gold/10'
-                : 'bg-transparent py-5'
+                ? 'bg-ivory/95 backdrop-blur-md py-2.5 shadow-sm border-b border-gold/10'
+                : 'bg-transparent py-4'
                 }`}
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
@@ -40,13 +40,13 @@ const Navbar = () => {
                     <img
                         src="/logo.png"
                         alt="Logo"
-                        className="h-10 w-auto transition-all duration-300"
+                        className="h-8 md:h-9 w-auto transition-all duration-300"
                     />
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center space-x-10">
-                    <div className="flex items-center space-x-8 mr-6">
+                <div className="hidden md:flex items-center space-x-8">
+                    <div className="flex items-center space-x-6 mr-4">
                         {navLinks.map((link, i) => {
                             const isAnchor = link.href.includes('#');
                             const Content = (
@@ -55,17 +55,20 @@ const Navbar = () => {
                                     {link.name === 'Home' && isHomePage && (
                                         <motion.span
                                             layoutId="nav-underline"
-                                            className="absolute -bottom-1 left-0 w-full h-[2px] bg-gold"
+                                            className="absolute -bottom-1 left-0 w-full h-[1px] bg-gold"
                                         />
                                     )}
                                 </>
                             );
 
+                            const linkClass = `text-[11px] font-normal tracking-[0.2em] uppercase hover:text-gold transition-colors duration-300 relative group ${isScrolled || !isHomePage ? 'text-charcoal/80' : 'text-white/90'
+                                }`;
+
                             return isAnchor ? (
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className={`text-sm font-medium hover:text-gold transition-colors duration-300 relative group ${isScrolled || !isHomePage ? 'text-charcoal' : 'text-white'}`}
+                                    className={linkClass}
                                 >
                                     {Content}
                                 </a>
@@ -73,7 +76,7 @@ const Navbar = () => {
                                 <Link
                                     key={link.name}
                                     to={link.href}
-                                    className={`text-sm font-medium hover:text-gold transition-colors duration-300 relative group ${isScrolled || !isHomePage ? 'text-charcoal' : 'text-white'}`}
+                                    className={linkClass}
                                 >
                                     {Content}
                                 </Link>
@@ -82,11 +85,11 @@ const Navbar = () => {
                     </div>
 
                     <motion.button
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="flex items-center space-x-2 bg-gold text-maroon hover:bg-gold-light px-6 py-2 rounded-lg text-xs font-bold tracking-wider transition-all duration-300 shadow-lg"
+                        className="flex items-center space-x-1.5 border border-gold hover:bg-gold text-gold hover:text-maroon px-4 py-1.5 rounded-full text-[10px] font-medium tracking-[0.18em] uppercase transition-all duration-300"
                     >
-                        <Crown size={14} fill="currentColor" />
+                        <Crown size={11} fill="currentColor" className="shrink-0" />
                         <span>JOIN VIP</span>
                     </motion.button>
                 </div>
@@ -95,9 +98,9 @@ const Navbar = () => {
                 <div className="md:hidden">
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className={isScrolled || !isHomePage ? 'text-charcoal' : 'text-white'}
+                        className={isScrolled || !isHomePage ? 'text-charcoal/80' : 'text-white/90'}
                     >
-                        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                        {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
                     </button>
                 </div>
             </div>
@@ -109,12 +112,12 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-ivory border-b border-gold/10 overflow-hidden shadow-2xl"
+                        className="md:hidden bg-ivory border-b border-gold/10 overflow-hidden shadow-xl"
                     >
-                        <div className="flex flex-col space-y-4 p-6">
+                        <div className="flex flex-col space-y-3.5 p-6">
                             {navLinks.map((link) => {
                                 const isAnchor = link.href.includes('#');
-                                const classes = "text-charcoal font-medium text-lg hover:text-gold flex items-center justify-between";
+                                const classes = "text-charcoal/80 font-normal text-xs uppercase tracking-widest hover:text-gold flex items-center justify-between py-1";
                                 return isAnchor ? (
                                     <a
                                         key={link.name}
@@ -123,7 +126,7 @@ const Navbar = () => {
                                         className={classes}
                                     >
                                         {link.name}
-                                        <span className="w-2 h-2 rounded-full bg-gold/30"></span>
+                                        <span className="w-1.5 h-1.5 rounded-full bg-gold/30"></span>
                                     </a>
                                 ) : (
                                     <Link
@@ -133,12 +136,12 @@ const Navbar = () => {
                                         className={classes}
                                     >
                                         {link.name}
-                                        <span className="w-2 h-2 rounded-full bg-gold/30"></span>
+                                        <span className="w-1.5 h-1.5 rounded-full bg-gold/30"></span>
                                     </Link>
                                 );
                             })}
-                            <button className="bg-gold text-maroon font-bold py-4 rounded-xl flex items-center justify-center space-x-2">
-                                <Crown size={18} fill="currentColor" />
+                            <button className="border border-gold text-gold hover:bg-gold hover:text-maroon py-3 rounded-full flex items-center justify-center space-x-2 text-[10px] font-semibold tracking-widest uppercase transition-all duration-300 mt-2">
+                                <Crown size={12} fill="currentColor" />
                                 <span>JOIN VIP</span>
                             </button>
                         </div>
