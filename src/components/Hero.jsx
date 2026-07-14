@@ -67,7 +67,7 @@ const Hero = () => {
     };
 
     return (
-        <section id="home" className="relative h-[80vh] md:h-[85vh] min-h-[550px] w-full bg-charcoal overflow-hidden group/hero">
+        <section id="home" className="relative h-[60vh] md:h-[85vh] min-h-[400px] md:min-h-[550px] w-full bg-charcoal overflow-hidden group/hero">
 
             {/* Carousel Slides */}
             <AnimatePresence initial={false} custom={direction}>
